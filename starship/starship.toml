@@ -1,0 +1,149 @@
+# ~/.config/starship.toml
+
+# https://github.com/ttys3/starship-config/blob/main/starship.toml
+# https://github.com/xcad2k/dotfiles/blob/main/.config/starship.toml
+# https://www.codependentcodr.com/using-starship-for-terminal-prompt-goodness.html
+
+add_newline = true
+command_timeout = 5000
+
+format = """
+[\uE0B6](#0077C2)\
+$username\
+$hostname\
+[\uE0B0](bg:#36454F fg:#0077C2)\
+$directory\
+[\uE0B0](bg:#F1502F fg:#36454F)\
+$git_branch\
+$git_status\
+[\uE0B0](bg:#702963 fg:#F1502F)\
+$python\
+$conda\
+$julia\
+[\uE0B0](bg:#93C572 fg:#702963)\
+$nodejs\
+$deno\
+[\uE0B0](bg:#560319 fg:#93C572)\
+$ruby\
+$rust\
+$scala\
+[\uE0B0](bg:#0077C2 fg:#560319)\
+$golang\
+[\uE0B0](bg:#36454F fg:#0077C2)\
+$status\
+$cmd_duration\
+[\uE0B0](fg:#36454F)\
+$line_break\
+$time\
+[\uF054 ](bold fg:#FFA500)\
+"""
+
+continuation_prompt = "[\uF054\uF054 ](bold fg:#FFA500)"
+
+[username]
+style_user = "bg:#0077C2 fg:#DCDCDC"
+style_root = "bg:#0077C2 fg:#E8000D"
+format = "[$user]($style)"
+show_always = true
+
+[hostname]
+ssh_only = true
+style = "bg:#0077C2 fg:#560319"
+format = "[@$hostname]($style)"
+trim_at = ""
+
+[directory]
+# truncation_length = 99
+# truncate_to_repo = false
+style = "bg:#36454F fg:#FEAE34"
+read_only = "\uE0A2"
+format = "[ $path]($style)[$read_only]($read_only_style)"
+fish_style_pwd_dir_length = 1
+
+[git_branch]
+always_show_remote = true
+truncation_length = 4
+style = "bg:#F1502F fg:#DCDCDC"
+format = "[ $symbol$branch]($style)"
+# format = "[ $symbol$branch(->$remote_name/$remote_branch)]($style)"
+
+[git_status]
+format = "[ $conflicted$staged$modified$renamed$deleted$untracked$stashed$ahead_behind]($style)"
+style = "bg:#F1502F fg:#DCDCDC"
+conflicted = "\uFC85 "
+# up_to_date = "\uF046 "
+untracked = "\uF071 "
+ahead = "\u21E1${count} "
+diverged = "\u2646[\u21E1${ahead_count}\u21E3${behind_count}] "
+behind = "\u21E3${count} "
+stashed = "\uF44E "
+modified = "\uF044 "
+staged = '[++\($count\)](bg:#F1502F fg:#DCDCDC) '
+renamed = "\uFAB6 "
+deleted = "\uF6BF "
+
+[python]
+# pyenv_version_name = true
+symbol = "\uE73C "
+style = "bg:#702963 fg:#DCDCDC"
+format = '[ ${symbol}${pyenv_prefix}(${version})(\($virtualenv\))]($style)'
+
+[julia]
+symbol = "\uE624 "
+style = "bg:#702963 fg:#DCDCDC"
+format = "[ $symbol($version)]($style)"
+
+[conda]
+symbol = "\uF10C "
+style = "bg:#702963 fg:#DCDCDC"
+format = "[ $symbol$environment]($style)"
+
+[deno]
+style = "bg:#93C572 fg:#36454F"
+format = "[ $symbol($version)]($style)"
+
+[nodejs]
+style = "bg:#93C572 fg:#36454F"
+format = "[ $symbol($version)]($style)"
+
+[ruby]
+symbol = "\uE23E "
+style = "bg:#560319 fg:#DCDCDC"
+format = "[ $symbol($version)]($style)"
+
+[rust]
+symbol = "\uE7A8 "
+style = "bg:#560319 fg:#DCDCDC"
+format = "[ $symbol($version)]($style)"
+
+[scala]
+symbol = "\uE737 "
+style = "bg:#560319 fg:#DCDCDC"
+format = "[ ${symbol}(${version})]($style)"
+
+[golang]
+symbol = "\uE627 "
+style = "bg:#0077C2 fg:#DCDCDC"
+format = "[ ${symbol}(${version})]($style)"
+
+[status]
+style = "bg:#36454F fg:#93C572"
+# success_symbol = "[\uF00C ]($style)"
+symbol = "[\uF00D ](bg:#36454F fg:#E8000D)"
+format = "[ $symbol$signal_name$maybe_int]($style)"
+map_symbol = true
+pipestatus = true
+disabled = false
+
+[cmd_duration]
+min_time = 10_000
+style = "bg:#36454F fg:#DCDCDC"
+format = "[ \uFBAB$duration]($style)"
+
+[time]
+use_12hr = true
+format = "[$time ](fg:#DCDCDC)"
+time_format = "%H:%M:%S"
+utc_time_offset = "+5"
+disabled = false
+
