@@ -1,0 +1,5 @@
+extras     https://github.com/ScoopInstaller/Extras
+jcwillox   https://github.com/jcwillox/scoop-bucket
+main       https://github.com/ScoopInstaller/Main
+nerd-fonts https://github.com/matthewjberger/scoop-nerd-fonts
+versions   https://github.com/ScoopInstaller/Versions
